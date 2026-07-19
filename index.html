@@ -106,11 +106,12 @@
         .phone-mockup img { width: 100%; display: block; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
-        /* ✅ SCREENSHOTS & OTHERS (Skipped detailed CSS block to save space, but keeping structure exact same) */
+        /* ✅ FEATURES */
         .features { padding: 100px 0; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
         .feature-icon { width: 60px; height: 60px; background: rgba(69, 243, 255, 0.1); border-radius: 15px; display: flex; justify-content: center; align-items: center; font-size: 24px; color: var(--primary); margin-bottom: 20px; }
         
+        /* ✅ SCREENSHOTS */
         .screenshots { padding: 100px 0; background: rgba(255, 255, 255, 0.01); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
         .sc-gallery { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
         .sc-gallery::-webkit-scrollbar { display: none; }
@@ -123,12 +124,14 @@
         #lightbox img { max-height: 90vh; max-width: 90vw; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         .close-lightbox { position: absolute; top: 20px; right: 30px; font-size: 40px; color: #fff; cursor: pointer; z-index: 2001; }
 
+        /* ✅ WHY CHOOSE */
         .why-choose { padding: 100px 0; }
         .badges-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 800px; margin: 0 auto; }
         .badge { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 12px 25px; border-radius: 30px; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
         .badge:hover { background: rgba(176, 38, 255, 0.2); border-color: var(--secondary); transform: translateY(-3px); }
         .badge i { color: var(--primary); }
 
+        /* ✅ DOWNLOAD SECTION */
         .download { padding: 80px 0; }
         .download-box { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 30px; padding: 60px 30px; text-align: center; position: relative; overflow: hidden; }
         .download-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--gradient); }
@@ -137,6 +140,7 @@
         .spec { background: rgba(0, 0, 0, 0.3); padding: 10px 20px; border-radius: 12px; font-size: 0.9rem; color: var(--text-muted); border: 1px solid var(--glass-border); }
         .spec strong { color: #fff; display: block; font-size: 1.1rem; margin-top: 5px; }
 
+        /* ✅ FAQ */
         .faq { padding: 100px 0; }
         .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
         .faq-item { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; transition: 0.3s; }
@@ -229,7 +233,7 @@
                     <li><a href="#features">Features</a></li>
                     <li><a href="#screenshots">Screenshots</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#download" class="btn btn-primary" style="color: #fff; padding: 10px 20px;">Download</a></li>
+                    <li><a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk" class="btn btn-primary" style="color: #fff; padding: 10px 20px;">Download</a></li>
                 </ul>
             </nav>
             <div class="menu-btn" id="menu-btn">
@@ -245,7 +249,7 @@
                 <h1>The Ultimate <span>Tournament</span> Management App</h1>
                 <p>Create tournaments, manage matches, track leaderboards and results effortlessly. Join thousands of gamers today.</p>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn btn-primary"><i class="fa-brands fa-android"></i> Download App</a>
+                    <a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk" class="btn btn-primary"><i class="fa-brands fa-android"></i> Download App</a>
                     <a href="#features" class="btn btn-outline">Learn More</a>
                 </div>
             </div>
@@ -312,13 +316,13 @@
                 <p style="color: var(--text-muted); margin-top: 10px;">Get the ultimate esports experience directly on your Android device.</p>
                 
                 <div class="app-specs">
-                    <div class="spec">Version <strong>v3.0.1 (Latest)</strong></div>
+                    <div class="spec">Version <strong>v3.0.2 (Latest)</strong></div>
                     <div class="spec">Size <strong>~5.1 MB</strong></div>
                     <div class="spec">OS <strong>Android 6.0+</strong></div>
                     <div class="spec">Developer <strong>Official Team</strong></div>
                 </div>
 
-                <a href="https://github.com/rajuduuy67/Zxolive1/releases/download/v3.0.1/ZXO.LIVE.1.apk" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px; margin-top: 10px;">
+                <a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px; margin-top: 10px;">
                     <i class="fa-solid fa-download"></i> Download APK Now
                 </a>
             </div>
@@ -344,7 +348,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col"><a href="#" class="logo" style="margin-bottom: 20px; font-size: 1.5rem;"><i class="fa-solid fa-trophy"></i> ZXO LIVE</a><p>The ultimate destination for competitive esports tournaments. Join today and prove your skills.</p></div>
-                <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="#home">Home</a><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="#download">Download App</a></div></div>
+                <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="#home">Home</a><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk">Download App</a></div></div>
                 <div class="footer-col"><h4>Legal Policies</h4><div class="footer-links"><a onclick="openModal('privacyModal')">Privacy Policy</a><a onclick="openModal('tncModal')">Terms & Conditions</a><a onclick="openModal('refundModal')">Refund Policy</a><a onclick="openModal('disclaimerModal')">Disclaimer</a></div></div>
                 <div class="footer-col"><h4>Contact Us</h4><p style="color: #00e676;"><i class="fa-solid fa-headset"></i> Available 24/7 on WhatsApp</p><p style="font-size: 1.2rem; font-weight: 700; color: #fff;">+91 93652 16936</p><div class="social-links" style="margin-top: 15px;"><a href="https://wa.me/919365216936" target="_blank" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></div></div>
             </div>
@@ -354,7 +358,7 @@
 
     <!-- FABs -->
     <div class="fab-container">
-        <a href="#download" class="fab fab-download" title="Download APK"><i class="fa-solid fa-download"></i></a>
+        <a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk" class="fab fab-download" title="Download APK"><i class="fa-solid fa-download"></i></a>
         <a href="#home" class="fab fab-top" id="btn-back-top" title="Go to top"><i class="fa-solid fa-arrow-up"></i></a>
     </div>
 
@@ -401,16 +405,20 @@
         </div>
     </div>
 
-    <!-- ✅ REGISTRATION SUCCESS MODAL -->
+    <!-- ✅ REGISTRATION SUCCESS MODAL (Smart Open/Download logic) -->
     <div class="modal-overlay" id="success-modal">
         <div class="modal-content" style="text-align: center; max-width: 400px;">
             <i class="fa-solid fa-circle-check" style="font-size: 60px; color: #00e676; margin-bottom: 20px;"></i>
             <h3 style="border: none; padding: 0; color: #fff;">Account Created!</h3>
-            <p style="margin-bottom: 25px;">Your account has been created successfully. You received a ₹2 Sign-Up Bonus!</p>
-            <p style="font-size: 13px; color: var(--primary); margin-bottom: 20px; font-weight: 600;">Please download the app and login with your details to start playing.</p>
-            <a href="https://github.com/rajuduuy67/Zxolive1/releases/download/v3.0.1/ZXO.LIVE.1.apk" class="btn btn-primary" style="width: 100%;">
-                <i class="fa-solid fa-download"></i> Download App Now
-            </a>
+            
+            <!-- ₹5 Bonus message -->
+            <p style="margin-bottom: 25px;">Your account has been created successfully. You received a <strong style="color: #00e676;">₹5 Sign-Up Bonus!</strong></p>
+            
+            <p style="font-size: 13px; color: var(--primary); margin-bottom: 20px; font-weight: 600;">Click below to open the app (if installed) or it will download automatically.</p>
+            
+            <button onclick="smartOpenOrDownload()" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 15px 0;">
+                <i class="fa-brands fa-android"></i> Open / Download App
+            </button>
         </div>
     </div>
 
@@ -456,7 +464,7 @@
             setTimeout(() => { toast.style.animation = 'fadeOut 0.3s forwards'; setTimeout(() => toast.remove(), 300); }, 3500);
         }
 
-        // Handle Registration
+        // Handle Registration with ₹5 Bonus Logic
         document.getElementById('referral-form').addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -495,15 +503,15 @@
                     referredBy: enteredRefCode, createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
-                // 2. Add Sign-Up Bonus to User
-                batch.set(db.collection("wallets").doc(user.uid), { balance: 2, walletId: walletId });
+                // 2. Add ₹5 Sign-Up Bonus to User
+                batch.set(db.collection("wallets").doc(user.uid), { balance: 5, walletId: walletId });
                 batch.set(db.collection("wallets").doc(user.uid).collection("transactions").doc(), { 
-                    title: "Sign-Up Bonus", amount: 2, type: "bonus", status: "completed", timestamp: firebase.firestore.FieldValue.serverTimestamp() 
+                    title: "Sign-Up Bonus", amount: 5, type: "bonus", status: "completed", timestamp: firebase.firestore.FieldValue.serverTimestamp() 
                 });
                 
-                // 3. Process Admin Alert for Referrer Bonus
+                // 3. Process Admin Alert for Referrer ₹5 Bonus
                 batch.set(db.collection("admin_referrals").doc(user.uid), { 
-                    newUser: user.uid, newUserName: name, referrerZxId: enteredRefCode, status: "pending", timestamp: firebase.firestore.FieldValue.serverTimestamp() 
+                    newUser: user.uid, newUserName: name, referrerZxId: enteredRefCode, bonusAmount: 5, status: "pending", timestamp: firebase.firestore.FieldValue.serverTimestamp() 
                 });
 
                 batch.commit().then(() => { 
@@ -519,6 +527,25 @@
                 btn.innerHTML = 'Create Account'; btn.disabled = false; 
             });
         });
+
+        // --- SMART APP OPEN/DOWNLOAD LOGIC ---
+        function smartOpenOrDownload() {
+            let apkLink = "https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk";
+            
+            let clickedAt = +new Date();
+            
+            // Try to open the app directly (using standard intent format)
+            // Note: In real app, intent scheme should match Android Manifest
+            window.location.href = "zxolive://open";
+            
+            // Fallback timer: If app doesn't open within 1.5 seconds, start download
+            setTimeout(function() {
+                if (+new Date() - clickedAt < 2000) {
+                    showToast("App not found. Download starting...", "success");
+                    window.location.href = apkLink;
+                }
+            }, 1500);
+        }
 
         // --- 3. LOCAL CACHE ENGINE FOR SUPER FAST IMAGE LOADING ---
         const imageUrls = [
