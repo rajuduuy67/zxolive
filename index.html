@@ -179,7 +179,7 @@
         .footer-links a { color: var(--text-muted); font-size: 0.95rem; transition: 0.3s; cursor: pointer; }
         .footer-links a:hover { color: var(--primary); padding-left: 5px; }
         .social-links { display: flex; gap: 15px; }
-        .social-links a { width: 40px; height: 40px; border-radius: 50%; background: var(--glass-bg); display: flex; justify-content: center; align-items: center; color: #fff; transition: 0.3s; border: 1px solid var(--glass-border); }
+        .social-links a { width: 50px; height: 50px; border-radius: 50%; background: var(--glass-bg); display: flex; justify-content: center; align-items: center; color: #fff; transition: 0.3s; border: 1px solid var(--glass-border); font-size: 1.5rem; }
         
         /* Updated Hover Color for Telegram */
         .social-links a:hover { background: #2AABEE; color: #fff; transform: translateY(-3px); border-color: #2AABEE;}
@@ -362,10 +362,9 @@
                 
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-                    <!-- ✅ Changed to Telegram -->
-                    <p style="color: #2AABEE;"><i class="fa-brands fa-telegram"></i> Available 24/7 on Telegram</p>
-                    <p style="font-size: 1.2rem; font-weight: 700; color: #fff;">t.me/Zxolive1</p>
-                    <div class="social-links" style="margin-top: 15px;">
+                    <!-- ✅ Changed to Telegram Logo Link -->
+                    <p style="color: #2AABEE; margin-bottom: 15px;"><i class="fa-brands fa-telegram"></i> Available 24/7 on Telegram</p>
+                    <div class="social-links">
                         <a href="https://t.me/Zxolive1" target="_blank" title="Chat on Telegram"><i class="fa-brands fa-telegram"></i></a>
                     </div>
                 </div>
@@ -483,8 +482,8 @@
             setTimeout(() => { toast.style.animation = 'fadeOut 0.3s forwards'; setTimeout(() => toast.remove(), 300); }, 3500);
         }
 
-        // Handle Registration with ₹5 Bonus Logic
-        document.getElementById('referral-form').addEventListener('submit', (e) => {
+        // Handle Registration with ₹5 Double Bonus Logic
+        document.getElementById('referral-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             let name = document.getElementById('reg-name').value.trim();
@@ -507,6 +506,19 @@
                 "https://i.ibb.co/kgzQpMLN/image-search-1783307752501.png"
             ];
 
+            // Finding Referrer UID instantly from the Database
+            let referrerUid = null;
+            if(enteredRefCode) {
+                try {
+                    let refSnap = await db.collection("users").where("zxId", "==", enteredRefCode).limit(1).get();
+                    if(!refSnap.empty) { 
+                        referrerUid = refSnap.docs[0].id; 
+                    }
+                } catch(err) { 
+                    console.error("Error finding referrer:", err); 
+                }
+            }
+
             auth.createUserWithEmailAndPassword(email, pass).then((userCredential) => {
                 let user = userCredential.user;
                 let zxId = "ZXO" + Math.floor(100000 + Math.random() * 900000); 
@@ -519,19 +531,68 @@
                 batch.set(db.collection("users").doc(user.uid), {
                     name: name, phone: phone, email: email, zxId: zxId,
                     role: "user", isBanned: false, winnings: 0, photoURL: randomAvatar,
-                    referredBy: enteredRefCode, createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    referredBy: enteredRefCode && referrerUid ? enteredRefCode : null, 
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
-                // 2. Add ₹5 Sign-Up Bonus to User
-                batch.set(db.collection("wallets").doc(user.uid), { balance: 5, walletId: walletId });
-                batch.set(db.collection("wallets").doc(user.uid).collection("transactions").doc(), { 
-                    title: "Sign-Up Bonus", amount: 5, type: "bonus", status: "completed", timestamp: firebase.firestore.FieldValue.serverTimestamp() 
-                });
-                
-                // 3. Process Admin Alert for Referrer ₹5 Bonus
-                batch.set(db.collection("admin_referrals").doc(user.uid), { 
-                    newUser: user.uid, newUserName: name, referrerZxId: enteredRefCode, bonusAmount: 5, status: "pending", timestamp: firebase.firestore.FieldValue.serverTimestamp() 
-                });
+                if (referrerUid) {
+                    // [Referee/New User] Instantly Credit Wallet Balance (₹5)
+                    batch.set(db.collection("wallets").doc(user.uid), { balance: 5, walletId: walletId }, { merge: true });
+                    
+                    // [Referee/New User] Write Wallet Transaction
+                    batch.set(db.collection("wallets").doc(user.uid).collection("transactions").doc(), { 
+                        title: "Sign-Up Referral Bonus", 
+                        amount: 5, 
+                        type: "bonus", 
+                        status: "completed", 
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp() 
+                    });
+
+                    // [Referrer] Instantly Increment Wallet Balance (₹5)
+                    batch.set(db.collection("wallets").doc(referrerUid), { balance: firebase.firestore.FieldValue.increment(5) }, { merge: true });
+                    
+                    // [Referrer] Write Wallet Transaction
+                    let referrerTxnId = "ZXB_" + Date.now() + "_" + Math.floor(Math.random() * 100);
+                    batch.set(db.collection("wallets").doc(referrerUid).collection("transactions").doc(referrerTxnId), { 
+                        title: `Referral Bonus (User: ${name})`, 
+                        amount: 5, 
+                        type: "bonus", 
+                        status: "completed", 
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp() 
+                    });
+                    
+                    // Instant Notification to Referrer
+                    let refNotifId = "NOTIF_" + Date.now() + "_REF";
+                    batch.set(db.collection("users").doc(referrerUid).collection("notifications").doc(refNotifId), {
+                        title: "Referral Bonus Credited!",
+                        message: `Your friend ${name} joined using your link. You got ₹5 bonus instantly!`,
+                        type: "win",
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    // Instant Notification to New User (Referee)
+                    let signNotifId = "NOTIF_" + Date.now() + "_SIGN";
+                    batch.set(db.collection("users").doc(user.uid).collection("notifications").doc(signNotifId), {
+                        title: "Sign-Up Bonus Credited!",
+                        message: `You received ₹5 Sign-Up bonus for joining via referral link.`,
+                        type: "win",
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    // Log for admin record as completed
+                    batch.set(db.collection("admin_referrals").doc(user.uid), { 
+                        newUser: user.uid, 
+                        newUserName: name, 
+                        referrerUid: referrerUid, 
+                        referrerZxId: enteredRefCode, 
+                        status: "completed", 
+                        amount: 5,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp() 
+                    });
+                } else {
+                    // Normal signup without referral code
+                    batch.set(db.collection("wallets").doc(user.uid), { balance: 0, walletId: walletId }, { merge: true });
+                }
 
                 batch.commit().then(() => { 
                     auth.signOut(); // Log out from web context immediately
