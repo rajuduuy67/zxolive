@@ -180,7 +180,10 @@
         .footer-links a:hover { color: var(--primary); padding-left: 5px; }
         .social-links { display: flex; gap: 15px; }
         .social-links a { width: 40px; height: 40px; border-radius: 50%; background: var(--glass-bg); display: flex; justify-content: center; align-items: center; color: #fff; transition: 0.3s; border: 1px solid var(--glass-border); }
-        .social-links a:hover { background: #25D366; color: #fff; transform: translateY(-3px); border-color: #25D366;}
+        
+        /* Updated Hover Color for Telegram */
+        .social-links a:hover { background: #2AABEE; color: #fff; transform: translateY(-3px); border-color: #2AABEE;}
+        
         .copyright { text-align: center; padding-top: 20px; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.9rem; }
 
         .fab-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
@@ -233,7 +236,8 @@
                     <li><a href="#features">Features</a></li>
                     <li><a href="#screenshots">Screenshots</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk" class="btn btn-primary" style="color: #fff; padding: 10px 20px;">Download</a></li>
+                    <!-- ✅ Changed href to #download so it scrolls to the button -->
+                    <li><a href="#download" class="btn btn-primary" style="color: #fff; padding: 10px 20px;">Download</a></li>
                 </ul>
             </nav>
             <div class="menu-btn" id="menu-btn">
@@ -249,7 +253,8 @@
                 <h1>The Ultimate <span>Tournament</span> Management App</h1>
                 <p>Create tournaments, manage matches, track leaderboards and results effortlessly. Join thousands of gamers today.</p>
                 <div class="hero-buttons">
-                    <a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk" class="btn btn-primary"><i class="fa-brands fa-android"></i> Download App</a>
+                    <!-- ✅ Changed href to #download -->
+                    <a href="#download" class="btn btn-primary"><i class="fa-brands fa-android"></i> Download App</a>
                     <a href="#features" class="btn btn-outline">Learn More</a>
                 </div>
             </div>
@@ -316,13 +321,15 @@
                 <p style="color: var(--text-muted); margin-top: 10px;">Get the ultimate esports experience directly on your Android device.</p>
                 
                 <div class="app-specs">
-                    <div class="spec">Version <strong>v3.0.2 (Latest)</strong></div>
-                    <div class="spec">Size <strong>~5.1 MB</strong></div>
+                    <!-- ✅ Updated Version and Size -->
+                    <div class="spec">Version <strong>v4.0.0 (Latest)</strong></div>
+                    <div class="spec">Size <strong>15.4 MB</strong></div>
                     <div class="spec">OS <strong>Android 6.0+</strong></div>
                     <div class="spec">Developer <strong>Official Team</strong></div>
                 </div>
 
-                <a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px; margin-top: 10px;">
+                <!-- ✅ Updated to v4.0.0 link -->
+                <a href="https://github.com/rajuduuy67/zxolive/releases/download/v4.0.0/ZXO.LIVE.1.apk" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px; margin-top: 10px;">
                     <i class="fa-solid fa-download"></i> Download APK Now
                 </a>
             </div>
@@ -348,9 +355,20 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col"><a href="#" class="logo" style="margin-bottom: 20px; font-size: 1.5rem;"><i class="fa-solid fa-trophy"></i> ZXO LIVE</a><p>The ultimate destination for competitive esports tournaments. Join today and prove your skills.</p></div>
-                <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="#home">Home</a><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk">Download App</a></div></div>
+                
+                <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="#home">Home</a><a href="#features">Features</a><a href="#screenshots">Screenshots</a><a href="#download">Download App</a></div></div>
+                
                 <div class="footer-col"><h4>Legal Policies</h4><div class="footer-links"><a onclick="openModal('privacyModal')">Privacy Policy</a><a onclick="openModal('tncModal')">Terms & Conditions</a><a onclick="openModal('refundModal')">Refund Policy</a><a onclick="openModal('disclaimerModal')">Disclaimer</a></div></div>
-                <div class="footer-col"><h4>Contact Us</h4><p style="color: #00e676;"><i class="fa-solid fa-headset"></i> Available 24/7 on WhatsApp</p><p style="font-size: 1.2rem; font-weight: 700; color: #fff;">+91 93652 16936</p><div class="social-links" style="margin-top: 15px;"><a href="https://wa.me/919365216936" target="_blank" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></div></div>
+                
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <!-- ✅ Changed to Telegram -->
+                    <p style="color: #2AABEE;"><i class="fa-brands fa-telegram"></i> Available 24/7 on Telegram</p>
+                    <p style="font-size: 1.2rem; font-weight: 700; color: #fff;">t.me/Zxolive1</p>
+                    <div class="social-links" style="margin-top: 15px;">
+                        <a href="https://t.me/Zxolive1" target="_blank" title="Chat on Telegram"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> ZXO LIVE App. All rights reserved.</div>
         </div>
@@ -358,7 +376,8 @@
 
     <!-- FABs -->
     <div class="fab-container">
-        <a href="https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk" class="fab fab-download" title="Download APK"><i class="fa-solid fa-download"></i></a>
+        <!-- ✅ Updated to v4.0.0 link -->
+        <a href="https://github.com/rajuduuy67/zxolive/releases/download/v4.0.0/ZXO.LIVE.1.apk" class="fab fab-download" title="Download APK"><i class="fa-solid fa-download"></i></a>
         <a href="#home" class="fab fab-top" id="btn-back-top" title="Go to top"><i class="fa-solid fa-arrow-up"></i></a>
     </div>
 
@@ -423,10 +442,10 @@
     </div>
 
     <!-- ✅ LEGAL MODALS -->
-    <div class="modal-overlay" id="privacyModal" onclick="closeModal(event, 'privacyModal')"><div class="modal-content"><span class="close-modal" onclick="closeModalForce('privacyModal')">&times;</span><h3>Privacy Policy</h3><p>Welcome to ZXO LIVE 1. We value your privacy and are committed to protecting your personal information.</p><p>We may collect your name, email address, mobile number, UID, payment details, and device information to provide tournament services, process payments, verify winners, and improve the app.</p><p>Your personal information is kept secure and is never sold to third parties. Information may be shared only when required by law or with trusted payment service providers.</p><p>By using ZXO LIVE 1, you agree to this Privacy Policy.</p></div></div>
-    <div class="modal-overlay" id="tncModal" onclick="closeModal(event, 'tncModal')"><div class="modal-content"><span class="close-modal" onclick="closeModalForce('tncModal')">&times;</span><h3>Terms & Conditions</h3><p>By using ZXO LIVE 1, you agree to follow these terms:</p><ul><li>Users must provide correct information.</li><li>Entry fees must be paid before joining a tournament.</li><li>Any cheating, hacking, use of unauthorized tools, or unfair gameplay may result in account suspension without notice.</li><li>Tournament schedules, prize pools, and rules may change if necessary.</li><li>ZXO LIVE 1 reserves the right to cancel or reject any tournament entry if rules are violated.</li></ul></div></div>
-    <div class="modal-overlay" id="refundModal" onclick="closeModal(event, 'refundModal')"><div class="modal-content"><span class="close-modal" onclick="closeModalForce('refundModal')">&times;</span><h3>Refund Policy</h3><ul><li>Entry fees are generally non-refundable after a tournament has started.</li><li>If a tournament is cancelled by ZXO LIVE 1, eligible users may receive a full refund.</li><li>Refund requests will be reviewed based on the reason and supporting evidence.</li><li>Refunds, if approved, will be processed within a reasonable time.</li></ul></div></div>
-    <div class="modal-overlay" id="disclaimerModal" onclick="closeModal(event, 'disclaimerModal')"><div class="modal-content"><span class="close-modal" onclick="closeModalForce('disclaimerModal')">&times;</span><h3>Disclaimer</h3><p>ZXO LIVE 1 is an independent tournament platform.</p><p>This app is not affiliated with, endorsed by, sponsored by, or associated with Garena Free Fire or Garena. All trademarks, logos, and game-related content belong to their respective owners.</p><p>Users participate in tournaments at their own responsibility and agree to follow all applicable rules.</p></div></div>
+    <div class="modal-overlay" id="privacyModal" onclick="closeModal(event, 'privacyModal')"><div class="modal-content"><span class="close-modal" onclick="closeModalForce('privacyModal')">&times;</span><h3>Privacy Policy</h3><p>Welcome to ZXO LIVE. We value your privacy and are committed to protecting your personal information.</p><p>We may collect your name, email address, mobile number, UID, payment details, and device information to provide tournament services, process payments, verify winners, and improve the app.</p><p>Your personal information is kept secure and is never sold to third parties. Information may be shared only when required by law or with trusted payment service providers.</p><p>By using ZXO LIVE, you agree to this Privacy Policy.</p></div></div>
+    <div class="modal-overlay" id="tncModal" onclick="closeModal(event, 'tncModal')"><div class="modal-content"><span class="close-modal" onclick="closeModalForce('tncModal')">&times;</span><h3>Terms & Conditions</h3><p>By using ZXO LIVE, you agree to follow these terms:</p><ul><li>Users must provide correct information.</li><li>Entry fees must be paid before joining a tournament.</li><li>Any cheating, hacking, use of unauthorized tools, or unfair gameplay may result in account suspension without notice.</li><li>Tournament schedules, prize pools, and rules may change if necessary.</li><li>ZXO LIVE reserves the right to cancel or reject any tournament entry if rules are violated.</li></ul></div></div>
+    <div class="modal-overlay" id="refundModal" onclick="closeModal(event, 'refundModal')"><div class="modal-content"><span class="close-modal" onclick="closeModalForce('refundModal')">&times;</span><h3>Refund Policy</h3><ul><li>Entry fees are generally non-refundable after a tournament has started.</li><li>If a tournament is cancelled by ZXO LIVE, eligible users may receive a full refund.</li><li>Refund requests will be reviewed based on the reason and supporting evidence.</li><li>Refunds, if approved, will be processed within a reasonable time.</li></ul></div></div>
+    <div class="modal-overlay" id="disclaimerModal" onclick="closeModal(event, 'disclaimerModal')"><div class="modal-content"><span class="close-modal" onclick="closeModalForce('disclaimerModal')">&times;</span><h3>Disclaimer</h3><p>ZXO LIVE is an independent tournament platform.</p><p>This app is not affiliated with, endorsed by, sponsored by, or associated with Garena Free Fire or Garena. All trademarks, logos, and game-related content belong to their respective owners.</p><p>Users participate in tournaments at their own responsibility and agree to follow all applicable rules.</p></div></div>
 
     <!-- JAVASCRIPT -->
     <script>
@@ -530,12 +549,12 @@
 
         // --- SMART APP OPEN/DOWNLOAD LOGIC ---
         function smartOpenOrDownload() {
-            let apkLink = "https://github.com/rajuduuy67/zxolive/releases/download/v3.0.2/ZXO.LIVE.1.apk";
+            // ✅ Updated to v4.0.0 link
+            let apkLink = "https://github.com/rajuduuy67/zxolive/releases/download/v4.0.0/ZXO.LIVE.1.apk";
             
             let clickedAt = +new Date();
             
             // Try to open the app directly (using standard intent format)
-            // Note: In real app, intent scheme should match Android Manifest
             window.location.href = "zxolive://open";
             
             // Fallback timer: If app doesn't open within 1.5 seconds, start download
