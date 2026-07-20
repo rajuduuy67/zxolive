@@ -483,7 +483,7 @@
         }
 
         // Handle Registration with ₹5 Double Bonus Logic
-        document.getElementById('referral-form').addEventListener('submit', async (e) => {
+        document.getElementById('referral-form').addEventListener('submit', (e) => {
             e.preventDefault();
             
             let name = document.getElementById('reg-name').value.trim();
@@ -491,7 +491,7 @@
             let email = document.getElementById('reg-email').value.trim();
             let pass = document.getElementById('reg-pass').value;
             let confPass = document.getElementById('reg-conf-pass').value;
-            let enteredRefCode = document.getElementById('reg-ref-code').value.trim();
+            let enteredRefCode = document.getElementById('reg-ref-code').value.trim() || refCodeFromUrl || "";
             let btn = document.getElementById('reg-btn');
 
             if(pass !== confPass) return showToast("Passwords do not match", "error");
@@ -506,24 +506,25 @@
                 "https://i.ibb.co/kgzQpMLN/image-search-1783307752501.png"
             ];
 
-            // Finding Referrer UID instantly from the Database
-            let referrerUid = null;
-            if(enteredRefCode) {
-                try {
-                    let refSnap = await db.collection("users").where("zxId", "==", enteredRefCode).limit(1).get();
-                    if(!refSnap.empty) { 
-                        referrerUid = refSnap.docs[0].id; 
-                    }
-                } catch(err) { 
-                    console.error("Error finding referrer:", err); 
-                }
-            }
-
-            auth.createUserWithEmailAndPassword(email, pass).then((userCredential) => {
+            // Sign Up Auth First, then instantly query referrer in authorized context
+            auth.createUserWithEmailAndPassword(email, pass).then(async (userCredential) => {
                 let user = userCredential.user;
                 let zxId = "ZXO" + Math.floor(100000 + Math.random() * 900000); 
                 let walletId = "W" + Math.floor(10000000 + Math.random() * 90000000);
                 let randomAvatar = avatarPool[Math.floor(Math.random() * avatarPool.length)];
+
+                // Finding Referrer UID inside Auth Scope
+                let referrerUid = null;
+                if(enteredRefCode) {
+                    try {
+                        let refSnap = await db.collection("users").where("zxId", "==", enteredRefCode).limit(1).get();
+                        if(!refSnap.empty) { 
+                            referrerUid = refSnap.docs[0].id; 
+                        }
+                    } catch(err) { 
+                        console.error("Error finding referrer inside Auth scope:", err); 
+                    }
+                }
 
                 let batch = db.batch();
 
